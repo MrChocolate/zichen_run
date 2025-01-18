@@ -34,21 +34,19 @@ document.getElementById("parent").addEventListener('click', (e) => {
 
 // 修正
 const minimumSubarrayLengthByGuanLin = (nums, k) => {
-  let result = Infinity;
-  let item = 0;
-
-  for (let i = 0; i < nums.length; i++) {
-    item = 0;
-    for (let j = i; j < nums.length; j++) {
-      item |= nums[j];
-      if (item >= k) {
-        result = Math.min(result, j - i + 1);
-        break;
+  let result = Infinity
+  for(let i=0;i<nums.length;i++){
+      let item = nums[i]
+      if(nums[i]>=k)return 1
+      for(let j=i+1;j<nums.length;j++){
+          item = item | nums[j]
+          if(item >= k){
+              result = Math.min(result,j-i+1)
+              break
+          } 
       }
-    }
   }
-  
-  return result === Infinity ? -1 : result;
-};
+  return result===Infinity ? -1 :result
+}
 
 
