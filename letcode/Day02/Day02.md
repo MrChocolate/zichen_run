@@ -17,5 +17,9 @@
 输出：1
 解释：1 和 -1 都是距离 0 最近的数字，所以返回较大值 1 。
 
+function findClosestNumber(nums: number[]): number {
+    
+};
+
 # JS
 JavaScript 中 this 是如何运作的？
