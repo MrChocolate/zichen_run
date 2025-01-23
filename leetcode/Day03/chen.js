@@ -4,23 +4,17 @@ const maxCoinsValue = (piles, k) => {
   for(let i=0;i<piles.length;i++){
       const currentItem = piles[i]
       for(let j=k;j>=0;j--){
-          for(let m=0;m<=j;m++){
-              f[j]=Math.max(f[j-m]+mySum(currentItem,m),f[j])
+          let sum = 0
+          for(let m=0;m<=Math.min(j,currentItem.length);m++){
+              if(m>0){
+              sum += currentItem[m-1]
+              }
+              f[j]=Math.max(f[j-m]+sum,f[j])
           }
       }
   }
   return f[k]
 }
-// 计算当前栈取num个数的值
-const mySum = (arr, num) => {
-  let res = 0;
-  let n = Math.min(num, arr.length);
-  for (let i = 0; i < n; i++) {
-      res += arr[i];
-  }
-  return res;
-}
-
 
 function Person() { }
 // var person = Person() 是调用Person普通函数，person等于Person函数返回的结果，
