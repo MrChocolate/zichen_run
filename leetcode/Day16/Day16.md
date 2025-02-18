@@ -16,5 +16,8 @@ function climbStairs(n) {
 }
 ```
 
+最长公共子串问题
+    问题：最长公共子串（Longest Common Substring) 是指两个字符串中最长连续相同的子串长度，给出两个字符串，输出其最长公共子串
+
 # JS
 绑定事件的方法On 与 addEventListener，有什么区别
