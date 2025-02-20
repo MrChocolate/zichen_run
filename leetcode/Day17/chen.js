@@ -1,36 +1,30 @@
-// 三数之和为0 [2,-1,-1,3,-2]
+// 三数之和为0 
 function threeSum(nums) {
   nums.sort((a, b) => a - b)
-  let left = 0
-  let right = nums.length - 1
-  let res
-  let result = []
-  if (nums[left] >= 0 && nums[right] !== 0 || nums[left]!==0 && nums[right]<=0) {
-    return result
-  }
-  while (left < right) {
-    res = nums[left] + nums[right]
-    let copyNums = nums.slice(left + 1, right)
-    const index = copyNums.indexOf(-res)
-    if (index !== -1) {
-      result.push([nums[left], nums[right], copyNums[index]])
-    }
-    if (res > 0) {
-      let curRight = nums[right]
-      right--
-      while (nums[right] === curRight) {
-        right--
+  const n = nums.length
+  let res = []
+  for(let i=0;i<n-2;i++){
+      if(i > 0 && nums[i] === nums[i-1])continue
+      let l = i+1
+      let r = n-1
+      let target = -nums[i]
+      while(l < r){
+      let sum = nums[l] + nums[r]
+      if(sum === target){
+          res.push([nums[l],nums[r],nums[i]])
+          while(l < r && nums[l]===nums[l+1])l++
+          while(l < r && nums[r] === nums[r-1])r--
+          l++
+          r--
+      }else if(sum > target){
+          r--
+      }else{
+          l++
       }
-    } else {
-      let curLeft = nums[left]
-      left++
-      while (nums[left] === curLeft) {
-        left++
       }
-    }
-
   }
-  return result
+      return res
 }
 
 // console.log(threeSum([-2,-8,8,-8,0,-8,10,16]))
+
